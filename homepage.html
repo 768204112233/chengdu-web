@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花重锦官城｜蓉城行旅攻略</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft Yahei", "PingFang SC", sans-serif; }
+        :root {
+            --green: #2f7d51; --green-light: #e6f4ea;
+            --gold: #c8a44b; --gold-light: #fbf3dd;
+            --text-1: #1f2933; --text-2: #4b5563; --text-3: #718096;
+            --bg: #f7f9fb; --card: #ffffff; --border: #eef1f4;
+            --shadow: 0 10px 30px rgba(20, 40, 60, 0.08);
+            --shadow-hover: 0 20px 45px rgba(20, 40, 60, 0.14);
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text-1); line-height: 1.7; }
+        header { position: sticky; top: 0; z-index: 999; background: rgba(255,255,255,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+        .nav-box { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding:18px 40px; }
+        .logo { font-size: 24px; font-weight: 700; background: linear-gradient(90deg, var(--green), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        nav a { text-decoration: none; color: var(--text-1); margin-left:26px; font-size:15px; font-weight:500; position:relative; transition: 0.3s; }
+        nav a::after { content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:linear-gradient(90deg, var(--green), var(--gold)); transition:0.3s; }
+        nav a:hover::after { width:100%; }
+        nav a:hover { color:var(--green); }
+        .hero { position: relative; padding: 80px 20px 60px; text-align: center; background: radial-gradient(circle at 20% 20%, rgba(47,125,81,0.18), transparent 40%), radial-gradient(circle at 80% 10%, rgba(200,164,75,0.18), transparent 45%), linear-gradient(135deg, #f7f9fb 0%, #eef6f1 50%, #fbf6e4 100%); background-image: linear-gradient(rgba(47,125,81,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(47,125,81,0.06) 1px, transparent 1px); background-size: 40px 40px; }
+        .hero-content { position: relative; z-index: 2; max-width: 820px; margin: 0 auto 20px; }
+        .hero .subtitle { display: inline-block; font-size: 13px; letter-spacing: 4px; text-transform: uppercase; color: var(--green); background: var(--green-light); padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; }
+        .hero h1 { font-size: 54px; line-height: 1.2; letter-spacing: 2px; margin-bottom: 18px; color: var(--green); }
+        .hero h1 span { color: var(--gold); }
+        .hero p { font-size: 18px; color: var(--text-2); margin-bottom: 30px; }
+        .hero-btn { padding:14px 34px; border:none; border-radius:999px; background:linear-gradient(120deg,var(--green),#3fa36a); color:white; font-size:16px; font-weight:600; cursor:pointer; transition:0.3s; box-shadow:0 10px 24px rgba(47,125,81,0.28); }
+        .hero-btn:hover { transform: translateY(-4px); box-shadow:0 16px 32px rgba(47,125,81,0.36); }
+        .ifs-full-hero { width:100%; position:relative; }
+        .ifs-full-image { width:100%; height:520px; }
+        .ifs-full-image img { width:100%; height:100%; object-fit:cover; display:block; }
+        .ifs-float-card { position:absolute; right:60px; top:60px; width:330px; background:rgba(0,0,0,0.55); backdrop-filter:blur(16px); border-radius:22px; border:1px solid rgba(255,255,255,0.15); box-shadow:0 20px 45px rgba(0,0,0,0.25); padding:26px 24px; z-index:20; }
+        .ifs-float-tag { font-size:12px; letter-spacing:3px; color:#89d1a1; text-transform:uppercase; margin-bottom:12px; }
+        .ifs-float-card h2 { font-size:24px; line-height:1.3; margin-bottom:12px; color:#ffffff; }
+        .ifs-float-card h2 span { background: linear-gradient(90deg,#89d1a1,#e6c874); -webkit-background-clip:text; background-clip:text; color:transparent; }
+        .ifs-float-card p { font-size:14px; color:#e9e9e9; line-height:1.7; margin-bottom:14px; }
+        .ifs-float-list { list-style:none; }
+        .ifs-float-list li { padding:8px 0 8px 22px; position:relative; font-size:13px; color:#dddddd; border-bottom:1px dashed rgba(255,255,255,0.12); line-height:1.6; }
+        .ifs-float-list li::before { content:""; position:absolute; left:0; top:13px; width:8px; height:8px; border-radius:50%; background:linear-gradient(135deg,#89d1a1,#e6c874); }
+        .ifs-float-list li:last-child { border-bottom:none; }
+        .scroll-float-wrap { position:absolute; left:0; right:0; top:420px; z-index:30; pointer-events:none; }
+        .scroll-float-inner { width:92%; max-width:1280px; margin:0 auto; pointer-events:auto; }
+        .scroll-float-card { background:rgba(255,255,255,0.96); backdrop-filter:blur(14px); border-radius:22px; border:1px solid var(--border); box-shadow:0 20px 45px rgba(20,40,60,0.18); padding:18px 22px; overflow:hidden; }
+        .scroll-float-title { font-size:13px; color:var(--green); font-weight:600; margin-bottom:12px; padding-left:4px; letter-spacing:1px; }
+        /* 自动无缝滚动 */
+        .scroll-track-wrap { overflow: hidden; width: 100%; }
+        .scroll-float-track {
+            display:flex;
+            gap:14px;
+            animation: scrollLoop 30s linear infinite;
+            width: max-content;
+        }
+        .scroll-track-wrap:hover .scroll-float-track { animation-play-state: paused; }
+        @keyframes scrollLoop {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .scroll-float-item { flex:0 0 240px; height:140px; border-radius:16px; overflow:hidden; border:1px solid var(--border); background:white; box-shadow:0 6px 18px rgba(20,40,60,0.08); }
+        .scroll-float-item img { width:100%; height:100%; object-fit:cover; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 120px 40px 80px; }
+        .section-header { display: flex; align-items: end; justify-content: space-between; margin-bottom: 40px; gap: 20px; flex-wrap: wrap; }
+        .section-tag { font-size: 12px; letter-spacing: 3px; color: var(--green); text-transform: uppercase; margin-bottom: 10px; }
+        .sec-title { font-size: 34px; font-weight: 700; color: var(--text-1); }
+        .sec-title span { background: linear-gradient(90deg, var(--green), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .sec-desc { color: var(--text-2); font-size: 15px; margin-top: 8px; }
+        .big-pics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 80px; }
+        .big-pic-card { background: var(--card); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+        .big-pic-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .big-pic-image { width: 100%; height: 340px; overflow: hidden; border-bottom: 1px solid var(--border); }
+        .big-pic-image img { width: 100%; height: 100%; object-fit: cover; }
+        .big-pic-body { padding: 24px; }
+        .big-pic-body h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-1); }
+        .big-pic-body p { color: var(--text-2); font-size: 14px; line-height: 1.7; }
+        .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-bottom:80px; }
+        .card { background: var(--card); border-radius: 22px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.4s ease, box-shadow 0.4s ease; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+        .card-image { width: 100%; height: 220px; overflow: hidden; border-bottom: 1px solid var(--border); }
+        .card-image img { width:100%; height:100%; object-fit: cover; }
+        .card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+        .card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+        .tag { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--green-light); color: var(--green); font-weight: 600; }
+        .tag.gold { background: var(--gold-light); color: #9a7b2f; }
+        .card-body h3 { font-size: 20px; margin-bottom: 10px; color: var(--text-1); }
+        .card-body p { color: var(--text-2); font-size: 14px; line-height: 1.7; }
+        .food-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom:80px; }
+        .food-card { background: var(--card); border-radius: 20px; padding: 28px 22px; border: 1px solid var(--border); box-shadow: var(--shadow); transition: transform 0.35s ease, box-shadow 0.35s ease; }
+        .food-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .food-card a { text-decoration: none; color: inherit; display: block; }
+        .food-card h4 { font-size: 18px; margin-bottom: 10px; color: var(--text-1); }
+        .food-card p { font-size: 14px; color: var(--text-2); }
+        .route-box { background:var(--card); border-radius:24px; padding:40px; border:1px solid var(--border); box-shadow:var(--shadow); margin-bottom:60px; }
+        .route-two-col { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+        .route-block h3 { font-size:20px; color:var(--green); margin-bottom:16px; }
+        .route-item { border-left:3px solid var(--gold); padding-left:14px; }
+        .route-item p { font-size:16px; color:var(--text-2); margin-bottom:8px; line-height:1.8; }
+        .tip-wrap { background: linear-gradient(135deg,#fffbf0,#fef7e2); border-left:6px solid var(--gold); border-radius:20px; padding:36px; box-shadow:var(--shadow); margin-bottom:80px; }
+        .tip-wrap h3 { color:#9a7b2f; margin-bottom:16px; font-size:17px; }
+        .tip-wrap ul { list-style:none; }
+        .tip-wrap li { padding:8px 0 8px 22px; position:relative; color:var(--text-2); border-bottom:1px dashed #f1e3b5; font-size:13.5px; line-height:1.7; }
+        .tip-wrap li::before { content:""; position:absolute; left:0; top:14px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
+        .tip-wrap li:last-child { border-bottom:none; }
+        footer { background:#14232a; color:#cfd6db; text-align:center; padding:40px 20px; }
+        footer p { font-size:14px; opacity:0.85; }
+        #backTop { position:fixed; bottom:36px; right:36px; width:48px;height:48px; border-radius:50%; border:none; background:var(--green); color:white; font-size:20px; cursor:pointer; display:none; box-shadow:0 10px 24px rgba(47,125,81,0.35); transition:transform 0.3s; }
+        #backTop:hover { transform:scale(1.08); }
+        @media (max-width: 1100px) {
+            .ifs-full-image { height:440px; }
+            .ifs-float-card { right:30px; width:300px; }
+            .scroll-float-wrap { top:340px; }
+            .scroll-float-item { flex:0 0 210px; height:120px; }
+            .big-pics { grid-template-columns: 1fr; }
+            .card-grid { grid-template-columns: repeat(2, 1fr); }
+            .food-grid { grid-template-columns: repeat(2, 1fr); }
+            .route-two-col { grid-template-columns:1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-box { flex-direction:column; gap:14px; padding:16px 20px; }
+            nav a { margin:0 10px; font-size:14px; }
+            .hero { padding: 60px 20px 40px; }
+            .hero h1 { font-size: 36px; }
+            .container { padding: 100px 20px 60px; }
+            .ifs-full-image { height:380px; }
+            .ifs-float-card { right:initial; left:50%; top:20px; transform:translateX(-50%); width:calc(100% - 32px); max-width:420px; }
+            .scroll-float-wrap { top:290px; }
+            .scroll-float-card { padding:14px; }
+            .scroll-float-item { flex:0 0 180px; height:110px; }
+            .card-grid { grid-template-columns: 1fr; }
+            .food-grid { grid-template-columns: 1fr; }
+            .route-box { padding:28px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav-box">
+        <div class="logo">🐼 花重锦官城</div>
+        <nav>
+            <a href="#city">市区玩乐</a>
+            <a href="#around">周边一日游</a>
+            <a href="#food">地道美食</a>
+            <a href="#route">游玩路线</a>
+            <a href="#tip">避坑贴士</a>
+        </nav>
+    </div>
+</header>
+<section class="hero">
+    <div class="hero-content">
+        <div class="subtitle">CHENGDU TRAVEL GUIDE</div>
+        <h1>花重锦官城 · <span>蓉城行旅攻略</span></h1>
+        <p>寻古蜀文脉，品天府滋味｜用更舒展的方式，打开成都的慢生活与烟火气。</p>
+        <button class="hero-btn" onclick="document.getElementById('ifs-main').scrollIntoView({behavior:'smooth'})">查看城市地标</button>
+    </div>
+</section>
+
+<div class="ifs-full-hero" id="ifs-main">
+    <div class="ifs-full-image">
+        <img src="ifs.jpg" alt="IFS爬墙熊猫">
+    </div>
+    <div class="ifs-float-card">
+        <div class="ifs-float-tag">CITY ICON</div>
+        <h2>城市地标 · <span>IFS 爬墙熊猫</span></h2>
+        <p>成都最具辨识度的城市符号，也是太古里商圈热门打卡位。</p>
+        <ul class="ifs-float-list">
+            <li>最佳拍照：上午 9–11 点 / 傍晚 17–19 点</li>
+            <li>顺路搭配：太古里、望平街、春熙路</li>
+        </ul>
+    </div>
+    <div class="scroll-float-wrap">
+        <div class="scroll-float-inner">
+            <div class="scroll-float-card">
+                <div class="scroll-float-title">蓉城印象 · 精选图集</div>
+                <div class="scroll-track-wrap">
+                    <div class="scroll-float-track">
+                        <!-- 第一组 -->
+                        <div class="scroll-float-item"><img src="panda.jpg" alt="熊猫基地"></div>
+                        <div class="scroll-float-item"><img src="wuhouci.jpg" alt="武侯祠"></div>
+                        <div class="scroll-float-item"><img src="jiuyanqiao.jpg" alt="九眼桥"></div>
+                        <div class="scroll-float-item"><img src="leshan.jpg" alt="乐山大佛"></div>
+                        <div class="scroll-float-item"><img src="sanxingdui.jpg" alt="三星堆"></div>
+                        <div class="scroll-float-item"><img src="kuanzhai.jpg" alt="宽窄巷子"></div>
+                        <div class="scroll-float-item"><img src="dufu.jpg" alt="杜甫草堂"></div>
+                        <div class="scroll-float-item"><img src="qingchengshan.jpg" alt="青城山"></div>
+                        <!-- 第二组（复制一份，实现无缝循环） -->
+                        <div class="scroll-float-item"><img src="panda.jpg" alt="熊猫基地"></div>
+                        <div class="scroll-float-item"><img src="wuhouci.jpg" alt="武侯祠"></div>
+                        <div class="scroll-float-item"><img src="jiuyanqiao.jpg" alt="九眼桥"></div>
+                        <div class="scroll-float-item"><img src="leshan.jpg" alt="乐山大佛"></div>
+                        <div class="scroll-float-item"><img src="sanxingdui.jpg" alt="三星堆"></div>
+                        <div class="scroll-float-item"><img src="kuanzhai.jpg" alt="宽窄巷子"></div>
+                        <div class="scroll-float-item"><img src="dufu.jpg" alt="杜甫草堂"></div>
+                        <div class="scroll-float-item"><img src="qingchengshan.jpg" alt="青城山"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- 两大重点大图 -->
+    <section>
+        <div class="section-header">
+            <div>
+                <div class="section-tag">FEATURED SPOTS</div>
+                <h2 class="sec-title">精选推荐 · <span>两大必看</span></h2>
+                <p class="sec-desc">一个看萌态国宝，一个看蓉城夜色。</p>
+            </div>
+        </div>
+        <div class="big-pics">
+            <div class="big-pic-card">
+                <div class="big-pic-image">
+                    <img src="panda.jpg" alt="大熊猫繁育研究基地">
+                </div>
+                <div class="big-pic-body">
+                    <h3>大熊猫繁育研究基地</h3>
+                    <p>来成都，熊猫基地是很多人的第一站。建议早上入园，熊猫更活跃，游览体验也更好。这里适合慢逛，不建议赶时间打卡。</p>
+                </div>
+            </div>
+            <div class="big-pic-card">
+                <div class="big-pic-image">
+                    <img src="jiuyanqiao.jpg" alt="九眼桥">
+                </div>
+                <div class="big-pic-body">
+                    <h3>九眼桥</h3>
+                    <p>九眼桥是成都夜生活的代表之一。夜晚灯光映在河面，城市氛围感很强，适合饭后散步、拍照和感受蓉城夜景。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 市区玩乐：武侯祠 + 杜甫草堂 + 宽窄巷子 -->
+    <section id="city">
+        <div class="section-header">
+            <div>
+                <div class="section-tag">URBAN SPOTS</div>
+                <h2 class="sec-title">蓉城市区 · <span>打卡玩乐</span></h2>
+                <p class="sec-desc">从古巷烟火到夜色阑珊，用脚步慢慢读懂成都。</p>
+            </div>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-image">
+                    <img src="wuhouci.jpg" alt="武侯祠">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="tag">三国圣地</span>
+                    </div>
+                    <h3>武侯祠</h3>
+                    <p>红墙夹道，翠竹掩映，全国唯一君臣合祀祠庙。建议提前预约，慢慢逛感受三国文化。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="dufu.jpg" alt="杜甫草堂">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="tag">诗意草堂</span>
+                    </div>
+                    <h3>杜甫草堂</h3>
+                    <p>诗圣故居，竹林流水，环境清幽，适合安静散步和阅读成都的诗意。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="kuanzhai.jpg" alt="宽窄巷子">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="tag">老城街巷</span>
+                    </div>
+                    <h3>宽窄巷子</h3>
+                    <p>老成都院落街巷，青瓦灰墙，适合慢逛拍照，感受蓉城烟火气。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 周边一日游 -->
+    <section id="around">
+        <div class="section-header">
+            <div>
+                <div class="section-tag">DAY TRIPS</div>
+                <h2 class="sec-title">蜀地周边 · <span>一日往返</span></h2>
+                <p class="sec-desc">大佛、古蜀、青城，用一天时间感受成都之外的蜀地精华。</p>
+            </div>
+        </div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-image">
+                    <img src="leshan.jpg" alt="乐山大佛">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="tag">大佛奇观</span>
+                    </div>
+                    <h3>乐山大佛</h3>
+                    <p>成都高铁约1小时直达，看71米大佛，打卡张公桥美食街，跷脚牛肉、甜皮鸭必吃！</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="sanxingdui.jpg" alt="三星堆">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="tag">古蜀文明</span>
+                    </div>
+                    <h3>三星堆博物馆</h3>
+                    <p>广汉高铁20分钟，神秘青铜面具，周一闭馆！一定要提前线上预约。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-image">
+                    <img src="qingchengshan.jpg" alt="青城山">
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="tag">世界遗产</span>
+                    </div>
+                    <h3>青城山</h3>
+                    <p>"青城天下幽"，道教名山，森林茂密适合吸氧爬山。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 美食 -->
+    <section id="food">
+        <div class="section-header">
+            <div>
+                <div class="section-tag">LOCAL FOOD</div>
+                <h2 class="sec-title">蜀味珍馐 · <span>地道美食街区</span></h2>
+                <p class="sec-desc">点击街区卡片，可直接打开地图导航。</p>
+            </div>
+        </div>
+        <div class="food-grid">
+            <div class="food-card">
+                <a href="https://amap.com/place/奎星楼街" target="_blank">
+                    <h4>📍 奎星楼街</h4>
+                    <p>文艺美食街｜冒椒火辣、蛋烘糕、糖油果子</p>
+                </a>
+            </div>
+            <div class="food-card">
+                <a href="https://amap.com/place/抚琴夜市" target="_blank">
+                    <h4>📍 抚琴夜市</h4>
+                    <p>本地人夜市｜锅巴土豆、烧烤、手工冰粉</p>
+                </a>
+            </div>
+            <div class="food-card">
+                <a href="https://amap.com/place/建设巷小吃街" target="_blank">
+                    <h4>📍 建设路</h4>
+                    <p>小吃街区｜钵钵鸡、肥肠粉、烤苕皮</p>
+                </a>
+            </div>
+            <div class="food-card">
+                <a href="https://amap.com/place/玉林西路" target="_blank">
+                    <h4>📍 玉林街</h4>
+                    <p>慢生活街区｜小酒馆、卤味、家常菜</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 路线模块 -->
+    <section id="route">
+        <div class="section-header">
+            <div>
+                <div class="section-tag">TRAVEL ROUTE</div>
+                <h2 class="sec-title">行旅路线 · <span>懒人攻略</span></h2>
+                <p class="sec-desc">用三天时间，把成都的经典景点和烟火味串起来。</p>
+            </div>
+        </div>
+        <div class="route-box">
+            <div class="route-two-col">
+                <div class="route-block">
+                    <h3>✅ 蓉城3日闲游版</h3>
+                    <div class="route-item">
+                        <p>Day1：熊猫基地 → 文殊院 → 人民公园喝茶 → 奎星楼街吃晚饭</p>
+                        <p>Day2：杜甫草堂 → 武侯祠 → 锦里夜游</p>
+                        <p>Day3：春熙路、太古里 → 望平街 → 九眼桥夜景</p>
+                    </div>
+                </div>
+                <div class="route-block">
+                    <h3>✅ 周边一日路线（二选一）</h3>
+                    <div class="route-item">
+                        <p>路线A：青城山休闲爬山</p>
+                        <p>路线B：乐山一日游（看大佛 + 本地美食）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 贴士模块 -->
+    <section id="tip">
+        <div class="tip-wrap">
+            <h3>⚠️ 行旅贴士 · 避坑指南</h3>
+            <ul>
+                <li>熊猫基地一定要早去，中午熊猫大多休息</li>
+                <li>锦里、宽窄巷子小吃溢价较高，地道口味可去社区夜市</li>
+                <li>三星堆、成都博物馆、武侯祠建议提前预约</li>
+                <li>去青城山/乐山优先选择高铁，不建议参加低价购物团</li>
+                <li>火锅建议先点微辣，本地辣度后劲较强</li>
+                <li>特产不必在景区购买，超市选择更方便</li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>🐼 花重锦官城 · 蓉城行旅攻略 | 寻古蜀文脉，品天府滋味</p>
+    <p style="margin-top:10px;">纯攻略分享，仅供旅行参考</p>
+</footer>
+
+<button id="backTop">↑</button>
+
+<script>
+    const backTop = document.getElementById("backTop");
+    window.addEventListener("scroll", () => {
+        backTop.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    backTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    const cards = document.querySelectorAll(".card, .food-card, .route-box, .tip-wrap, .big-pic-card");
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.12 });
+    cards.forEach(card => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+        observer.observe(card);
+    });
+</script>
+</body>
+</html>
