@@ -1,0 +1,224 @@
+#未加图片，还需修改版
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小米页面布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #e8e8e8;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    a { text-decoration: none; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    .m {
+      width: 1060px;
+      height: 585px;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    .top {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+    }
+
+    .name {
+      float: left;
+      padding-left: 18px;
+      font-size: 20px;
+      color: #666;
+    }
+
+    .more { float: right; }
+    .more a {
+      padding-right: 18px;
+      color: #666;
+    }
+    .more a:hover { color: orange; }
+
+    .main {
+      width: 100%;
+      height: 535px;
+      padding: 15px;
+    }
+
+    .left {
+      float: left;
+      width: 200px;
+      height: 505px;
+    }
+    .left img {
+      width: 200px;
+      height: 505px;
+      object-fit: cover;
+      background: #f5f5f5;
+    }
+
+    .right {
+      float: left;
+      width: 800px;
+      height: 505px;
+      margin-left: 15px;
+    }
+
+    .right ul li {
+      float: left;
+      width: 245px;
+      height: 238px;
+      margin-right: 15px;
+      margin-bottom: 15px;
+      background-color: #fff;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+    }
+    .right ul li:nth-child(3n) { margin-right: 0; }
+    .right a { display: block; width: 100%; height: 100%; padding: 18px 14px; }
+
+    .right .pic {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 10px;
+    }
+    .right .pic img {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      background: #fafafa;
+    }
+
+    .right .text h4 {
+      font-weight: normal;
+      color: #666;
+      font-size: 14px;
+      height: 26px;
+      line-height: 26px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .right .text p {
+      color: #ccc;
+      font-size: 13px;
+      height: 26px;
+      line-height: 26px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .right .text .price {
+      color: orange;
+      font-weight: 700;
+    }
+
+    @media (max-width: 1100px) {
+      .m { width: calc(100% - 24px); height: auto; }
+      .main { height: auto; }
+      .left, .right { float: none; width: 100%; height: auto; margin-left: 0; }
+      .left img { width: 100%; height: 260px; }
+      .right ul li { width: calc((100% - 30px) / 3); }
+    }
+
+    @media (max-width: 760px) {
+      .right ul li { width: calc((100% - 15px) / 2); }
+    }
+
+    @media (max-width: 520px) {
+      .right ul li { width: 100%; margin-right: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="m" id="phone">
+    <div class="top">
+      <div class="name">智能穿戴</div>
+      <div class="more"><a href="javascript:void(0)">查看更多 &gt;&gt;&gt;</a></div>
+    </div>
+
+    <div class="main">
+      <div class="left">
+        <ul>
+          <li><a href="javascript:void(0)"><img src="images/fb0f558c36d089d58ad7708ad6d0733.jpg" alt="左侧主图"></a></li>
+        </ul>
+      </div>
+
+      <div class="right">
+        <ul>
+          <li>
+            <a href="javascript:void(0)">
+              <div class="pic"><img src="images/image5-2-1.jpg" alt="智能手环"></div>
+              <div class="text">
+                <h4>小米手环 8</h4>
+                <p>全天候健康监测与运动记录</p>
+                <p class="price">249 元起</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <div class="pic"><img src="images/image5-2-2.jpg" alt="智能手表"></div>
+              <div class="text">
+                <h4>智能手表 Pro</h4>
+                <p>高清大屏，长续航户外模式</p>
+                <p class="price">1299 元起</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <div class="pic"><img src="images/image5-2-3.jpg" alt="心率手表"></div>
+              <div class="text">
+                <h4>心率运动手表</h4>
+                <p>跑步与睡眠数据分析</p>
+                <p class="price">899 元起</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <div class="pic"><img src="images/image5-2-4.jpg" alt="儿童手表"></div>
+              <div class="text">
+                <h4>儿童电话手表</h4>
+                <p>定位通话，家长远程守护</p>
+                <p class="price">499 元起</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <div class="pic"><img src="images/image5-2-5.jpg" alt="时尚腕带"></div>
+              <div class="text">
+                <h4>时尚腕带</h4>
+                <p>多彩表带，适配日常穿搭</p>
+                <p class="price">199 元起</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <div class="pic"><img src="images/image5-2-6.jpg" alt="旗舰手表"></div>
+              <div class="text">
+                <h4>旗舰智能手表</h4>
+                <p>独立通信，丰富应用与表盘</p>
+                <p class="price">1599 元起</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+

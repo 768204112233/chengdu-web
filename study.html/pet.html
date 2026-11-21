@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱宠知识</title>
+    <style>
+        /* 1. 清空所有默认边距 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 外层盒子：370px*550px，居中，圆点背景，圆角15px，半透明阴影 */
+        div {
+            width: 370px;
+            height: 550px;
+            margin: 30px auto;
+            /* 纯CSS绿色圆点背景，不需要bg.gif */
+            background-color: #bceb60;
+            background-image: radial-gradient(#a2d844 12%, transparent 12%);
+            background-size: 24px 24px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, .2);
+            padding: 20px;
+        }
+        /* 内层盒子：350px*460px，白色背景，半透明阴影 */
+        ul {
+            background-color: #fff;
+            width: 350px;
+            height: 460px;
+            box-shadow: 0 0 10px 3px rgba(0, 0, 0, .4);
+            margin: 0 auto;
+            padding: 6px;
+        }
+        /* 列表项：行高48px，底部虚线#ccc，左侧绿色小圆点 */
+        ul li {
+            list-style: none;
+            height: 48px;
+            line-height: 48px;
+            border-bottom: 2px dashed #ccc;
+            /* 小圆点，不用tb.gif */
+            background: radial-gradient(#739311 30%, transparent 30%) no-repeat 6px center;
+            background-size: 15px;
+            padding-left: 24px;
+        }
+        /* 标题：左侧竖线 #bbeb2c */
+        h1 {
+            color: #fff;
+            border-left: 5px solid #bbeb2c;
+            padding-left: 10px;
+            height: 36px;
+            line-height: 33px;
+            margin-bottom: 30px;
+            font-size:24px;
+        }
+        /* 超链接：无下划线，字体18px，颜色#333 */
+        ul li a {
+            display: block;
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+        }
+        /* hover：加粗，颜色#739311，文字阴影 #bbeb2c */
+        ul li a:hover {
+            font-weight: bold;
+            color: #739311;
+            text-shadow: 0px 0px 3px #bbeb2c;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>爱宠知识</h1>
+        <ul>
+            <li><a href="">养狗比养猫对健康更有利</a></li>
+            <li><a href="">日本正宗柴犬亮相，你怎么看柴犬？</a></li>
+            <li><a href="">狗狗歌曲《新年旺旺》</a></li>
+            <li><a href="">带宠兜风，开车带宠需要注意什么？</a></li>
+            <li><a href="">【爆笑】这狗狗太不给力了！</a></li>
+            <li><a href="">狗狗与男童相同着装拍有爱造型照</a></li>
+            <li><a href="">狗狗各个阶段健康大事件</a></li>
+            <li><a href="">调皮宠物狗陷在沙发里的搞笑瞬间</a></li>
+            <li><a href="">为什么每次大小便后，会用脚踢土？</a></li>
+        </ul>
+    </div>
+</body>
+</html>
